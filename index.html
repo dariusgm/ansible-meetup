@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Company Review bei WLW</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <meta name="description" content="Ein kleiner Überblick auf die letzten Projekte und Features bei WLW">
+        <meta name="author" content="Web Development">
+
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/wlw.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    		<script>
+    			if( window.location.search.match( /print-pdf/gi ) ) {
+    				var link = document.createElement( 'link' );
+    				link.rel = 'stylesheet';
+    				link.type = 'text/css';
+    				link.href = 'css/print/pdf.css';
+    				document.getElementsByTagName( 'head' )[0].appendChild( link );
+    			}
+    		</script>
+
+    		<!--[if lt IE 9]>
+    		<script src="lib/js/html5shiv.js"></script>
+    		<![endif]-->
+    </head>
+
+    <body>
+            <!--<header><img src="img/wlw_logo_de.png" style="height:50px"></header>-->
+        <div class="reveal">
+        <div class="slides" id="slides-id">
+        <section>
+            <h2>2. Ansible Meetup<br><br> The Fun and Pain with Ansible</h2>
+
+            <h3>Hamburg, 19.02.2015</h3>
+            <h4>Luka Dornhecker, Darius Murawski</h4>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-1">
+            <h3 class="green">Topics:</h3>
+            <ul>
+              <li>Who we are</li>
+              <li>The Pain with Puppet</li>
+              <li>Infrastructure</li>
+              <li>Software</li>
+              <li>The Fun (why we use it)</li>
+              <li>The Pain (with Vagrant)</li>
+              <li>The Pain (with Ansible)</li>
+            </ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-2">
+            <h3 class="green">Darius Murawski</h3>
+            <ul>
+              <li>Birth: 1987</li>
+              <li>Study: Applied Computer Science @ HAW Hamburg, finished Sommer 2014</li>
+              <li>Contact: dariusgmurawski@googlemail.com, dargm@github.com</li>
+            </ul>
+            <h3 class="green">Luka Dornhecker</h3>
+            <ul>
+              <li>Birth: </li>
+              <li>Study: </li>
+              <li>Contact: </li>
+            </ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-3">
+            <h3 class="green">Working at</h3>
+            <img src="img/1024.png" style="margin-top:-10%;">
+        </section>
+
+        <section data-background-transition="slide" id="ansible-4">
+        <h3 class="green">The Pain with Puppet</h3>
+        <ul><li>Execution Order</li>
+        <li>Script Example</li>
+        <li>DevOps write the stuff</li>
+        <li>Production Server</li></ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-5">
+        <h3 class="green">Infrastructure</h3>
+        <ul><li>Production</li>
+        <li>Onlinetest (Pre-Live)</li>
+        <li>Puppet Sandboxes (for QA)</li>
+        <li>Ansible Sandboxes (for Developers)</li>
+        <li>CI (Jenkins)</li>
+        <li>Vagrant</li></ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-6">
+        <h3 class="green">Software</h3>
+        <ul><li>Rails 3 , Rails 4</li>
+        <li>Postgres (SQL Database)</li>
+        <li>Elastic search (Search Engine)</li>
+        <li>Redis (Key-Value Database)</li>
+        <li>Nginx (Webserver)</li>
+        <li>RabbitMQ (Queueing System)</li>
+        <li>Monit for Monitoring</li></ul>
+        </section>
+
+
+        <section data-background-transition="slide" id="ansible-8">
+        <h3 class="green">The Fun (why we use it)</h3>
+        <ul><li>We love YML Files (rails !), clear structure</li>
+        <li>wer liefert was -  Ansible repositiory Structure</li>
+        <li>only sshd</li>
+        <li>Fast, Clear Execution Order</li>
+        <li>Modules for psql, rabbitmq and more</li>
+        <li>Key publishing with CI</li></ul>
+        </section>
+
+
+        <section data-background-transition="slide" id="ansible-9">
+        <h3 class="green">The Pain (with Vagrant)</h3>
+        <ul><li>Keep it in sync (Filesystem)</li>
+        <li>System Ruby needed</li></ul>
+        </section>
+
+
+        <section data-background-transition="slide" id="ansible-10">
+        <h3 class="green">The Pain (with Ansible)</h3>
+        <ul><li>Keep it in sync (Sandbox Server)</li>
+        <li>Dotenv (Vagrant / Sandbox) Config</li>
+        <li>QA the stuff ! (CI integration?)</li><li>DevOps don’t want to use Ansible for Production.</li></ul>
+        </section>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: false,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                //parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function () {
+                        return !document.body.classList;
+                    } },
+                    { src: 'plugin/markdown/marked.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    } },
+                    { src: 'plugin/markdown/markdown.js', condition: function () {
+                        return !!document.querySelector('[data-markdown]');
+                    } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                        return !!document.body.classList;
+                    } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                        return !!document.body.classList;
+                    } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

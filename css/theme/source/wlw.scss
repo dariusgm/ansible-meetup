@@ -1,0 +1,106 @@
+/**
+ * A simple theme for reveal.js presentations, similar
+ * to the default theme. The accent color is darkblue.
+ *
+ * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+@font-face {
+	font-family: 'Guardian Sans Web';
+	src: url('../../lib/font/Guardian Sans Web-Regular.eot');
+	src: url('../../lib/font/Guardian Sans Web-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/Guardian Sans Web-Regular.woff') format('woff'),
+		 url('../../lib/font/Guardian Sans Web-Regular.ttf') format('truetype'),
+		 url('../../lib/font/Guardian Sans Web-Regular.svg#GuardianSansWebRegular') format('svg');
+
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Guardian Sans Web';
+	src: url('../../lib/font/Guardian Sans Web-Semibold.eot');
+	src: url('../../lib/font/Guardian Sans Web-Semibold.eot?#iefix') format('embedded-opentype'),
+		 url('../../lib/font/Guardian Sans Web-Semibold.woff') format('woff'),
+		 url('../../lib/font/Guardian Sans Web-Semibold.ttf') format('truetype'),
+		 url('../../lib/font/Guardian Sans Web-Semibold.svg#GuardianSansWebSemibold') format('svg');
+
+	font-weight: bold;
+	font-style: normal;
+}
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'Guardian Sans Web', sans-serif;
+$mainColor: #000;
+$headingFont: 'Guardian Sans Web', Impact, sans-serif;
+$headingColor: #000;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #fff;
+$linkColor: #00008B;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: rgba(0, 0, 0, 0.99);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+header {
+	padding: 10px;
+	background: #f4f4f4;
+}
+h1.green, h2.green, h3.green, h4.green {
+	color: #89ba17;	
+}
+.green {
+	color: #89ba17;
+}
+.reveal {
+	letter-spacing: 1px;
+}
+
+.reveal section img {
+	border: none;
+	box-shadow: none;
+	background: none;
+}
+
+#team {
+	// color:white;
+	// h2, h3 {
+	// 	color: white;
+	//}
+}
+
+#teamfotos {
+	td {
+		text-align: center;
+	}
+	img {
+		max-height: 150px;
+		border: 5px solid #89ba17;
+		border-bottom: 10px solid #89ba17;
+		margin-bottom: 2px;
+	}
+	div {
+		font-size:18px;
+		display: inline;
+	}
+}
+
+#history, #kompetenzen {
+	img {
+		max-width: 150px;
+		margin:5px 20px;
+		max-height: 70px
+
+	}
+}
