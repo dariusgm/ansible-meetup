@@ -40,7 +40,7 @@
         <div class="reveal">
         <div class="slides" id="slides-id">
         <section>
-            <h2>2. Ansible Meetup<br><br> The Fun and Pain with Ansible</h2>
+            <h2>2. <img src="img/ansible.png" style="width:20%;margin-bottom:-1%;"> Meetup<br><br> The Fun and Pain with Ansible</h2>
 
             <h3>Hamburg, 19.02.2015</h3>
             <h4>Luka Dornhecker, Darius Murawski</h4>
@@ -54,7 +54,8 @@
               <li>Infrastructure</li>
               <li>Software</li>
               <li>The Fun (why we use it)</li>
-              <li>The Pain (with Vagrant)</li>
+              <li>Best Practice</li>
+              <li>Vagrant</li>
               <li>The Pain (with Ansible)</li>
             </ul>
         </section>
@@ -64,7 +65,8 @@
             <ul>
               <li>Birth: 1987</li>
               <li>Study: Applied Computer Science @ HAW Hamburg, finished Sommer 2014</li>
-              <li>Contact: dariusgmurawski@googlemail.com, dargm@github.com</li>
+              <li>Contact: <a href="mailto:dariusgmurawski@googlemail.com">dariusgmurawski@googlemail.com</a>,
+            <br> <a href="https://github.com/dariusgm/ansible-meetup">Github</a></li>
             </ul>
             <h3 class="green">Luka Dornhecker</h3>
             <ul>
@@ -75,64 +77,115 @@
         </section>
 
         <section data-background-transition="slide" id="ansible-3">
-            <h3 class="green">Working at</h3>
-            <img src="img/1024.png" style="margin-top:-10%;">
+            <h3 class="green">Working at <a href="www.wer-liefert-was.de">Wer liefert was</a></h3>
+            <img src="img/1024.png">
         </section>
 
         <section data-background-transition="slide" id="ansible-4">
         <h3 class="green">The Pain with Puppet</h3>
         <ul><li>Execution Order</li>
-        <li>Script Example</li>
         <li>DevOps write the stuff</li>
-        <li>Production Server</li></ul>
+        <li>Production Server</li>
+        <li>Change from monolith software to APIs</ul>
         </section>
 
         <section data-background-transition="slide" id="ansible-5">
         <h3 class="green">Infrastructure</h3>
-        <ul><li>Production</li>
-        <li>Onlinetest (Pre-Live)</li>
-        <li>Puppet Sandboxes (for QA)</li>
-        <li>Ansible Sandboxes (for Developers)</li>
-        <li>CI (Jenkins)</li>
-        <li>Vagrant</li></ul>
+          <img src="img/server.png">
         </section>
 
         <section data-background-transition="slide" id="ansible-6">
         <h3 class="green">Software</h3>
-        <ul><li>Rails 3 , Rails 4</li>
-        <li>Postgres (SQL Database)</li>
-        <li>Elastic search (Search Engine)</li>
-        <li>Redis (Key-Value Database)</li>
-        <li>Nginx (Webserver)</li>
-        <li>RabbitMQ (Queueing System)</li>
-        <li>Monit for Monitoring</li></ul>
+        <img src="img/ruby.svg">
+        <img src="img/rails.png">
+        <img src="img/postgres.svg" style="width:20%;">
+        <img src="img/es.png" style="width:20%;">
+        <img src="img/redis.png" style="width:20%;">
+        <img src="img/nginx.png" style="width:20%;">
+        <img src="img/rabbit.png">
+        <img src="img/monit.gif">
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-8">
+        <section data-background-transition="slide" id="ansible-7">
         <h3 class="green">The Fun (why we use it)</h3>
-        <ul><li>We love YML Files (rails !), clear structure</li>
-        <li>wer liefert was -  Ansible repositiory Structure</li>
+        <ul><li>We love yml files (rails !)</li>
         <li>only sshd</li>
         <li>Fast, Clear Execution Order</li>
         <li>Modules for psql, rabbitmq and more</li>
-        <li>Key publishing with CI</li></ul>
         </section>
 
+        <section data-background-transition="slide" id="ansible-8">
+        <h3 class="green">Best Practice - project structure</h3>
+        <ul>
+            <li>Every rails app own playbook file</li>
+            <li>Every external application own roles file</li>
+            <li>same path on every environment</li>
+        </ul>
+        </section>
 
         <section data-background-transition="slide" id="ansible-9">
-        <h3 class="green">The Pain (with Vagrant)</h3>
-        <ul><li>Keep it in sync (Filesystem)</li>
-        <li>System Ruby needed</li></ul>
+        <h3 class="green">Best Practice - key management</h3>
+        <ul>
+            <li>Key Repository</li>
+            <li>CI get triggered by changes and publish all keys</li>
+            <li>Keys as git submodule in your ansible repository</li>
+        </ul>
         </section>
-
 
         <section data-background-transition="slide" id="ansible-10">
-        <h3 class="green">The Pain (with Ansible)</h3>
-        <ul><li>Keep it in sync (Sandbox Server)</li>
-        <li>Dotenv (Vagrant / Sandbox) Config</li>
-        <li>QA the stuff ! (CI integration?)</li><li>DevOps don’t want to use Ansible for Production.</li></ul>
+        <h3 class="green">Best Practice - Release Management</h3>
+        <ul>
+            <li>Test from blank!</li>
+            <li>Test by diff!</li>
+        </ul>
         </section>
+
+        <section data-background-transition="slide" id="ansible-11">
+        <h3 class="green">Best Practice - Work with DevOps</h3>
+        <ul>
+            <li>Huge task to transfer puppet to ansible scripts</li>
+            <li>Show them how both can benefit (Continous Delivery)</li>
+            <li>Use .env files for configuration</li>
+        </ul>
+        </section>       
+
+
+
+        <section data-background-transition="slide" id="ansible-12">
+        <h3 class="green">Vagrant</h3>
+        <ul><li>Testing ansible stuff</li>
+        <li>Clean state of development VM ?!</li>
+        <li>Performance ?</li>
+        <li>System Ruby :-( </li>
+        </ul>
+        </section>
+
+
+        <section data-background-transition="slide" id="ansible-13">
+        <h3 class="green">The Pain (with Ansible)</h3>
+        <ul><li>Keep servers in sync</li>
+        <li>QA the stuff ! (CI integration?)</li></ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-14">
+        <h3 class="green">Thank you !</h3>
+        <ul><li>Questions ?</li>
+        </ul></section>
+
+
+        <section data-background-transition="slide" id="ansible-15">
+        <h3 class="green">Pictures:</h3>
+        <ul><li>http://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg</li>
+            <li>http://rubyonrails.org/images/rails.png</li>
+            <li>http://de.wikipedia.org/wiki/PostgreSQL#mediaviewer/File:Postgresql.svg</li>
+            <li>https://pbs.twimg.com/profile_images/631946075/realistic.png</li>
+            <li>http://sametmax.com/wp-content/uploads/2012/07/banner_redis-300dpi-0315a8013afee137cce47b474541d7f1.png</li>
+            <li>http://nginx.org/nginx.png</li>
+            <li>http://www.rabbitmq.com/img/rabbitmq_logo_strap.png</li>
+            <li>http://en.wikipedia.org/wiki/Monit#mediaviewer/File:Tildeslash_Monit_Logo.gif</li>
+        </ul></section>
+        
 
         <script src="lib/js/head.min.js"></script>
         <script src="js/reveal.min.js"></script>
