@@ -5,8 +5,7 @@
 
     <title>2nd Ansible Meetup</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <meta name="description" content="Ein kleiner Überblick auf die letzten Projekte und Features bei WLW">
-    <meta name="author" content="Web Development">
+    <meta name="author" content="Luka Dornhecker, Darius Murawski">
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -122,7 +121,7 @@
         </section>
 
         <section data-background-transition="slide" id="ansible-8">
-          <h3 class="green">Best Practice - project structure</h3>
+          <h3 class="green">Best Practice - Project Structure</h3>
           <ul>
             <li>Every rails app own playbook file</li>
             <li>Every external application own roles file</li>
@@ -131,15 +130,76 @@
         </section>
 
         <section data-background-transition="slide" id="ansible-9">
-          <h3 class="green">Best Practice - key management</h3>
+          <h3 class="green">Project Structure - Example</h3>
+          <pre>
+.
+├── handlers
+│   └── main.yml
+├── library
+│   └── users
+├── roles
+│   ├── appdirs
+│   ├── common
+│   ├── elasticsearch
+│   ├── kibana
+│   ├── lock
+│   ├── logstash
+│   ├── mailcatcher
+│   ├── monit
+│   ├── nginx
+│   ├── nodejs
+│   ├── phantomjs
+│   ├── postgresql
+│   ├── public-keys
+│   ├── rabbitmq
+│   ├── rbenv
+│   ├── redis
+│   ├── (roles for our apps)
+├── stages
+│   ├── sandbox
+│   └── vagrant
+├── README.md
+├── Vagrantfile
+├── (many plays for our apps)
+└── ansible.cfg
+          </pre>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-10">
+          <h3 class="green">Best Practice - Key Management</h3>
           <ul>
             <li>Key Repository</li>
             <li>CI get triggered by changes and publish all keys</li>
             <li>Keys as git submodule in your ansible repository</li>
           </ul>
+          <pre>
+---
+- name: gather public keys to be installed for root
+  local_action: shell cat roles/public-keys/files/keys/root/*.pub roles/public-keys/files/jenkins.pub
+  changed_when: False
+  sudo: False
+  ignore_errors: yes
+  register: keys_dev
+
+- name: create .ssh directory for root
+  file:
+    path="{{ users.root.home }}/.ssh"
+    state=directory
+    owner=root
+    group="{{ users.root.group }}"
+    mode=0700
+
+- name: install authorized_keys for root
+  copy:
+    content="{{ keys_dev.stdout }}"
+    dest="{{ users.root.home }}/.ssh/authorized_keys"
+    owner=appsse
+    group="{{ users.root.group }}"
+    mode=0600
+          </pre>
         </section>
 
-        <section data-background-transition="slide" id="ansible-10">
+        <section data-background-transition="slide" id="ansible-11">
           <h3 class="green">Best Practice - Release Management</h3>
           <ul>
             <li>Test from blank!</li>
@@ -147,7 +207,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-11">
+        <section data-background-transition="slide" id="ansible-12">
           <h3 class="green">Best Practice - Work with DevOps</h3>
           <ul>
               <li>Huge task to transfer puppet to ansible scripts</li>
@@ -156,7 +216,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-12">
+        <section data-background-transition="slide" id="ansible-13">
           <h3 class="green">Vagrant</h3>
           <ul>
             <li>Testing ansible stuff</li>
@@ -167,7 +227,7 @@
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-13">
+        <section data-background-transition="slide" id="ansible-14">
           <h3 class="green">The Pain (with Ansible)</h3>
           <ul>
             <li>Keep servers in sync</li>
@@ -176,7 +236,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-14">
+        <section data-background-transition="slide" id="ansible-15">
           <h3 class="green">Thank you!</h3>
           <ul>
             <li>Questions?</li>
@@ -184,7 +244,7 @@
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-15">
+        <section data-background-transition="slide" id="ansible-16">
           <h3 class="green">Pictures:</h3>
           <ul><li>http://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg</li>
             <li>http://rubyonrails.org/images/rails.png</li>
