@@ -166,6 +166,108 @@
         </section>
 
         <section data-background-transition="slide" id="ansible-10">
+        <h3>Example App</h3>
+        <pre>
+├── handlers
+│   └── main.yml
+├── tasks
+│   ├── main.yml
+│   ├── sandbox.yml
+│   └── vagrant.yml
+└── templates
+    ├── etc
+    │   ├── monit
+    │   │   └── conf.d
+    │   │       └── wlw_serp
+    │   └── nginx
+    │       ├── assets_locations
+    │       │   └── wlw_serp_assets.conf
+    │       ├── locations
+    │       │   └── wlw_serp.conf
+    │       └── upstreams
+    │           └── wlw_serp.conf
+    ├── home
+    │   └── appsse
+    │       └── wlw_serp
+    │           └── shared
+    │               └── bin
+    │                   └── _unicorn
+    ├── sandbox
+    │   └── home
+    │       └── appsse
+    │           └── wlw_serp
+    │               └── shared
+    │                   └── config
+    │                       └── unicorn.rb
+    └── vagrant
+        └── home
+            └── appsse
+                └── wlw_serp
+                    └── shared
+                        ├── database.yml
+                        └── unicorn.rb
+        </pre>>
+        </section data-background-transition="slide" id="ansible-11">
+
+        <section>
+        <h3>wlw_serp.yml</h3>
+<pre>
+- hosts: app
+  sudo: yes
+
+  roles:
+  - common
+  - monit
+  - nginx
+  - appsse
+  - rbenv
+  - { role: appdirs, app: wlw_serp }
+  - wlw_serp
+
+  handlers:
+  - include: handlers/main.yml
+  </pre>
+        </section>
+
+<section  id="ansible-12">
+<h3>main.yml</h3>
+<pre>
+---
+- include: sandbox.yml
+  when: inventory_hostname_short != "sandbox-dev"
+
+- include: vagrant.yml
+  when: inventory_hostname_short == "sandbox-dev"
+
+- name: configure nginx
+  template:
+    src={{ item }}
+    dest=/{{ item }}
+  with_items:
+    - etc/nginx/locations/wlw_serp.conf
+    - etc/nginx/upstreams/wlw_serp.conf
+  notify:
+    - restart nginx
+
+- name: copy bin/unicorn
+  template:
+    src="home/appsse/wlw_serp/shared/bin/_unicorn"
+    dest="{{ users.appsse.home }}/wlw_serp/shared/bin/_unicorn"
+    mode=0755
+  sudo: yes
+  sudo_user: appsse
+
+- name: configure monit
+  template:
+    src=etc/monit/conf.d/wlw_serp
+    dest=/etc/monit/conf.d/wlw_serp
+  notify: restart monit
+
+
+</pre>
+</section>
+
+        <section data-background-transition="slide" id="ansible-13">
           <h3 class="green">Best Practice - Key Management</h3>
           <ul>
             <li>Key Repository</li>
@@ -199,7 +301,7 @@
           </pre>
         </section>
 
-        <section data-background-transition="slide" id="ansible-11">
+        <section data-background-transition="slide" id="ansible-14">
           <h3 class="green">Best Practice - Release Management</h3>
           <ul>
             <li>Test from blank!</li>
@@ -207,7 +309,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-12">
+        <section data-background-transition="slide" id="ansible-15">
           <h3 class="green">Best Practice - Work with DevOps</h3>
           <ul>
               <li>Huge task to transfer puppet to ansible scripts</li>
@@ -216,7 +318,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-13">
+        <section data-background-transition="slide" id="ansible-16">
           <h3 class="green">Vagrant</h3>
           <ul>
             <li>Testing ansible stuff</li>
@@ -227,7 +329,7 @@
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-14">
+        <section data-background-transition="slide" id="ansible-16">
           <h3 class="green">The Pain (with Ansible)</h3>
           <ul>
             <li>Keep servers in sync</li>
@@ -236,7 +338,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-15">
+        <section data-background-transition="slide" id="ansible-17">
           <h3 class="green">Thank you!</h3>
           <ul>
             <li>Questions?</li>
@@ -244,7 +346,7 @@
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-16">
+        <section data-background-transition="slide" id="ansible-18">
           <h3 class="green">Pictures:</h3>
           <ul><li>http://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg</li>
             <li>http://rubyonrails.org/images/rails.png</li>
@@ -259,7 +361,6 @@
 
       </div><!-- slides -->
     </div><!-- reveal -->
-        
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
