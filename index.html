@@ -50,13 +50,14 @@
           <h3 class="green">Topics:</h3>
           <ul>
             <li>Who we are</li>
+            <li>Where we work</li>
             <li>The Pain with Puppet</li>
             <li>Infrastructure</li>
             <li>Software</li>
             <li>The Fun (why we use it)</li>
+            <li>The Pain (with Ansible)</li>
             <li>Best Practice</li>
             <li>Vagrant</li>
-            <li>The Pain (with Ansible)</li>
           </ul>
         </section>
 
@@ -121,6 +122,15 @@
         </section>
 
         <section data-background-transition="slide" id="ansible-8">
+          <h3 class="green">The Pain (with Ansible)</h3>
+          <ul>
+            <li>Keep servers in sync</li>
+            <li>QA the stuff! (CI integration?)</li>
+            <li>Handlers</li>
+          </ul>
+        </section>
+
+        <section data-background-transition="slide" id="ansible-9">
           <h3 class="green">Best Practice - Project Structure</h3>
           <ul>
             <li>Every rails app own playbook file</li>
@@ -129,7 +139,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-9">
+        <section data-background-transition="slide" id="ansible-10">
           <h3 class="green">Project Structure - Example</h3>
           <pre>
 .
@@ -165,7 +175,7 @@
           </pre>
         </section>
 
-        <section data-background-transition="slide" id="ansible-10">
+        <section data-background-transition="slide" id="ansible-11">
         <pre>
 ├── handlers
 │   └── main.yml
@@ -206,7 +216,7 @@
                         ├── database.yml
                         └── unicorn.rb
         </pre>>
-        </section data-background-transition="slide" id="ansible-11">
+        </section data-background-transition="slide" id="ansible-12">
 
         <section>
         <h3>wlw_serp.yml</h3>
@@ -228,7 +238,7 @@
   </pre>
         </section>
 
-<section  id="ansible-12">
+<section  id="ansible-13">
 <h3>main.yml</h3>
 <pre>
 ---
@@ -266,7 +276,7 @@
 </pre>
 </section>
 
-        <section data-background-transition="slide" id="ansible-13">
+        <section data-background-transition="slide" id="ansible-14">
           <h3 class="green">Best Practice - Key Management</h3>
           <ul>
             <li>Key Repository</li>
@@ -300,7 +310,7 @@
           </pre>
         </section>
 
-        <section data-background-transition="slide" id="ansible-14">
+        <section data-background-transition="slide" id="ansible-15">
           <h3 class="green">Best Practice - Release Management</h3>
           <ul>
             <li>Test from blank!</li>
@@ -308,7 +318,7 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-15">
+        <section data-background-transition="slide" id="ansible-16">
           <h3 class="green">Best Practice - Work with DevOps</h3>
           <ul>
               <li>Huge task to transfer puppet to ansible scripts</li>
@@ -317,37 +327,31 @@
           </ul>
         </section>
 
-        <section data-background-transition="slide" id="ansible-16">
+        <section data-background-transition="slide" id="ansible-17">
           <h3 class="green">Vagrant</h3>
           <ul>
             <li>Testing ansible stuff</li>
             <li>Clean state of development VM?!</li>
             <li>Performance ?</li>
-            <li>System Ruby :-(</li>
+            <li>Syncing</li>
+            <li>System Ruby needed on host :-(</li>
           </ul>
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-16">
-          <h3 class="green">The Pain (with Ansible)</h3>
-          <ul>
-            <li>Keep servers in sync</li>
-            <li>QA the stuff! (CI integration?)</li>
-            <li>Handlers</li>
-          </ul>
-        </section>
-
-        <section data-background-transition="slide" id="ansible-17">
+        <section data-background-transition="slide" id="ansible-19">
           <h3 class="green">Thank you!</h3>
           <ul>
             <li>Questions?</li>
+            <li>Find this awesome presentation at: <a href="https://github.com/dariusgm/ansible-meetup">https://github.com/dariusgm/ansible-meetup</a></li>
           </ul>
         </section>
 
 
-        <section data-background-transition="slide" id="ansible-18">
+        <section data-background-transition="slide" id="ansible-20">
           <h3 class="green">Pictures:</h3>
-          <ul><li>http://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg</li>
+          <ul>
+            <li>http://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg</li>
             <li>http://rubyonrails.org/images/rails.png</li>
             <li>http://de.wikipedia.org/wiki/PostgreSQL#mediaviewer/File:Postgresql.svg</li>
             <li>https://pbs.twimg.com/profile_images/631946075/realistic.png</li>
